@@ -9,8 +9,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 import { useSelector, useDispatch } from "react-redux";
 import { currentUser, friends } from "../../reducers/mainSlice";
-import { useNavigate } from 'react-router-dom'
-import httpClient from '../../httpClient'
+import { useNavigate } from "react-router-dom";
+import httpClient from "../../httpClient";
 
 const ProfileSettingsPage = () => {
   const userInfo = useSelector(currentUser);
@@ -18,21 +18,19 @@ const ProfileSettingsPage = () => {
   const allFriends = useSelector(friends);
 
   async function logoutUser() {
-
     try {
       const resp = await httpClient.post(
         "https://uabout.herokuapp.com/api/logout"
-  
       );
-  
+
       if (resp.status === 500) {
-        return navigate('/')
+        return navigate("/");
       }
-  
-      if (resp.status === 200){
-        return navigate('/')
+
+      if (resp.status === 200) {
+        return navigate("/");
       }
-  
+
       return resp;
     } catch (e) {
       console.log(e);
@@ -47,7 +45,6 @@ const ProfileSettingsPage = () => {
           <div className="eventform-parent-container" id="profile-card">
             <h1>Profile Settings</h1>
             <div id="avatar-container">
-              
               <BackgroundLetterAvatars />
               <ul id="profile-details">
                 <li>Username: {userInfo.username}</li>
@@ -57,14 +54,16 @@ const ProfileSettingsPage = () => {
             </div>
           </div>
           <div className="bottom-section">
-          <button id="logout-btn"><div class="tooltip">
-            <span class="tooltiptext">Logout</span>
-          <FontAwesomeIcon
-            id="logoutIcon"
-            icon={faRightFromBracket}
-            size="5x"
-          ></FontAwesomeIcon>
-        </div></button>
+            <button id="logout-btn">
+              <div class="tooltip">
+                <span class="tooltiptext">Logout</span>
+                <FontAwesomeIcon
+                  id="logoutIcon"
+                  icon={faRightFromBracket}
+                  size="5x"
+                ></FontAwesomeIcon>
+              </div>
+            </button>
           </div>
         </div>
         <Footer />
@@ -101,31 +100,30 @@ const ProfileSettingsPage = () => {
             </div>
           </div>
           <div className="bottom-section">
-          <button id="logout-btn"><div class="tooltip">
-            <span class="tooltiptext">Logout</span>
-          <FontAwesomeIcon
-            id="logoutIcon"
-            icon={faRightFromBracket}
-            size="5x"
-          ></FontAwesomeIcon>
-        </div></button>
+            <button id="logout-btn">
+              <div class="tooltip">
+                <span class="tooltiptext">Logout</span>
+                <FontAwesomeIcon
+                  id="logoutIcon"
+                  icon={faRightFromBracket}
+                  size="5x"
+                ></FontAwesomeIcon>
+              </div>
+            </button>
           </div>
         </div>
         <div className="friend-container">
-          {friendsArr.map(
-            (
-              { first_name, last_name, username, status },
-              idx
-            ) => (
-              <FriendRequest
-                first_name={first_name}
-                last_name={last_name}
-                username={username}
-                idx={idx}
-                status={status}
-              />
-            )
-          )}
+          {friendsArr.map(() => (
+            // { first_name, last_name, username, status },
+            // idx
+            <FriendRequest
+            // first_name={first_name}
+            // last_name={last_name}
+            // username={username}
+            // idx={idx}
+            // status={status}
+            />
+          ))}
         </div>
         <Footer />
       </div>
